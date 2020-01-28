@@ -8,10 +8,9 @@ namespace DoctorSchedule
     {
         static Random rnd = new Random();
         public int DoctorID { get; set; }
-
         private double WorkStart { get; set; }
         private double WorkEnd { get; set; }
-        
+
         public Doctor(string name, string surname) : base(name, surname)
         {
             WorkStart = 8;
@@ -29,27 +28,44 @@ namespace DoctorSchedule
             {
                 schedule.Add(WorkStart + i, null);
             }
-    
+
         }
 
         public void printSchedule()
         {
-            foreach(var time in schedule)
+            foreach (var time in schedule)
             {
-               
+
 
                 Console.WriteLine("{0, 10}:00 - {1}", time.Key, time.Value);
             }
         }
 
-        public void newPatient(Patient patient, double time) 
+        public bool newPatient(Patient patient, double time)
         {
-           
             if (schedule[time] == null)
             {
                 schedule[time] = $"{patient.Name} {patient.Surname} ({patient.ID})";
+                return true;
             }
+            return false;
+        }
 
+        public void printFullName()
+        {
+            Console.WriteLine($"{Name} {Surname} - расписание.");
+        }
+
+        public string checkTime(double time)
+        {
+            if (schedule[time] == null)
+                return "";
+            return "XXXXX";
+        }
+
+        public string getShortName()
+        {
+            return $"{Surname} {Name.Substring(0, 1)}.";
         }
     
     }
