@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoctorSchedule
 {
-    class Person
+    abstract class Person
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -17,5 +17,16 @@ namespace DoctorSchedule
             Name = name;
             Surname = surname;
         }
+
+        public string getShortName()
+        {
+            return $"{Surname} {Name.Substring(0, 1)}.";
+        }
+
+        public string getFullName()
+        {
+            return $"{Surname} {Name}";
+        }
+
     }
 }

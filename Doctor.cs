@@ -7,7 +7,7 @@ namespace DoctorSchedule
     class Doctor : Person
     {
         static Random rnd = new Random();
-        public int DoctorID { get; set; }
+        public int ID { get; set; }
         private double WorkStart { get; set; }
         private double WorkEnd { get; set; }
 
@@ -15,7 +15,7 @@ namespace DoctorSchedule
         {
             WorkStart = 8;
             WorkEnd = 16;
-            DoctorID = rnd.Next(1000);
+            ID = rnd.Next(1000);
 
             createSchedule();
         }
@@ -63,10 +63,7 @@ namespace DoctorSchedule
             return "XXXXX";
         }
 
-        public string getShortName()
-        {
-            return $"{Surname} {Name.Substring(0, 1)}.";
-        }
+      
     
     }
 }
